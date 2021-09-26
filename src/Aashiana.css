@@ -1,0 +1,55 @@
+@media (prefers-reduced-motion: no-preference) {
+    .rotat {
+      animation: birth infinite 10s linear 1s;
+    }
+    .mypic{
+        animation:pic infinite 2s linear 1s alternate ;
+    }
+}
+
+@keyframes birth{
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+   
+}
+@keyframes pic {
+    0%{
+        color: red;
+        transform:scale(1) rotate(0deg);
+    }
+    25%{
+        color:blue;
+        transform:scale(1.2) rotate(5deg);
+
+    }
+    50%{
+        color:green;
+        transform: scale(1.2) rotate(0deg);
+    }
+    100%{
+        color:orange;
+        transform: scale(1) rotate(-5deg);
+    }
+}
+#description::-webkit-scrollbar{
+    display: none;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background:black;
+    border:2px solid white;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color:gainsboro;
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover{
+background: orange;
+}
