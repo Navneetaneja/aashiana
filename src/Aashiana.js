@@ -198,7 +198,7 @@ class Aashiana extends React.Component{
             this.wish="Wishing "+this.age+" Happy Birthday"
             nm=17;
             this.me="Click My Pic !!";
-        }else if(d===1 && m===10){
+        }else if(d===2 && m===10){
             this.name="Mr Vikas AND Mrs Jyoti";
             this.age=y-2006;
             this.to="TO"
