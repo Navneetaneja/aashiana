@@ -13,6 +13,7 @@ class Aashiana extends React.Component{
     'images/md_ann.jpeg','images/me.jpeg','images/mom.jpeg','images/nani.jpeg','images/nanu.jpeg','images/nn_ann.jpeg',
     'images/nonu.jpeg','images/papa.jpeg','images/rajesh.jpeg','images/rasi_ann.jpeg','images/simmi.jpeg','images/vikas.jpeg',
     'images/vj_ann.jpeg','images/mothers.jpeg'];
+    url="";
     constructor(){
         super();
         var today=new Date();
@@ -23,7 +24,11 @@ class Aashiana extends React.Component{
             date:date,
             month:month+1,
             year:year,
-            menu:false
+            menu:false,
+            music:false,
+            birSong:new Audio("./birthday.mp3"),
+            anniSong:new Audio("./anniversary.mp3"),
+            video:false,
         }
     }
     
@@ -89,6 +94,11 @@ class Aashiana extends React.Component{
             this.wish="Wishing "+this.age+" Happy Anniversary"
             nm=6;
             this.me="Click Our Pic !!";
+            this.url="https://drive.google.com/file/d/18HGP3ocCX0JtDYyvtJlf1p_C_XDnc2Jj/preview";
+            this.desc="सात फेरों से बंधा यह प्यार का बंधन,\n"+
+            "जीवन भर यूं ही बंधा रहे,\n"+
+            "किसी की नजर ना लगे आपके प्यार को\n"+
+            "और आप यूं ही हर साल सालगिरह मनाते रहे।";
         }else if(d===21 && m===7){
             this.name="Navneet Aneja";
             this.age=y-2001;
@@ -195,6 +205,11 @@ class Aashiana extends React.Component{
             this.wish="Wishing "+this.age+" Happy Anniversary"
             nm=18;
             this.me="Click Our Pic !!";
+            this.desc="सात फेरों से बंधा यह प्यार का बंधन,\n"+
+            "जीवन भर यूं ही बंधा रहे,\n"+
+            "किसी की नजर ना लगे आपके प्यार को\n"+
+            "और आप यूं ही हर साल सालगिरह मनाते रहे।";
+            this.url="https://drive.google.com/file/d/18LdlKztkTZdmtCeR43R5orRixgITHbbt/preview";
         }
         else if(d===9 && m===5){
             this.name="ALL MOTHERS OF AASHIANA";
@@ -210,11 +225,10 @@ class Aashiana extends React.Component{
             this.me="Click Pic!!";
         }
         const show=(this.state.menu)?"show":"";
-
         return(
             <div>
-                <img onClick={()=>this.togle()} className="rounded-circle rotat sticky-top" src={this.src[nm]} alt="Birthday/Anniversary" height="250px" width="250px"/><br></br><br></br>
-                <span style={{borderRadius:"20px"}} onClick={()=>this.togle()} className="mypic btn btn-outline-warning bg-white">{this.me}</span><br></br><br></br>
+                <img onClick={()=>{this.togle();this.media()}} className="rounded-circle rotat sticky-top" src={this.src[nm]} alt="Birthday/Anniversary" height="250px" width="250px"/><br></br><br></br>
+                <span style={{borderRadius:"20px"}} onClick={()=>{this.togle();this.media()}} className="mypic btn btn-outline-warning bg-white">{this.me}</span><br></br><br></br>
             <div id="description" style={{maxHeight:"20vh",overflow:"scroll",boxShadow:"0px 0px 5px 3px white"}} className={"bg-info rounded text-white ml-2 mr-2 collapse"+show}>
             <div style={{whiteSpace:"pre-line",margin:"10px 20px"}}>
                 <table>
@@ -250,20 +264,59 @@ class Aashiana extends React.Component{
     }
    togle(){
        this.setState({
-           menu:!this.state.menu
+           menu:!this.state.menu,
+           music:!this.state.music
        });
+   }
+   media()
+   {
+       if(this.me==="Click Our Pic !!")
+       {
+           if(this.state.music===false)
+           this.state.anniSong.play();
+           else
+           this.state.anniSong.pause();
+       }
+       else if(this.me==="Click My Pic !!"){
+        if(this.state.music===false)
+        this.state.birSong.play();
+        else
+        this.state.birSong.pause();
+       }
    }
    
    componentDidMount()
    {
-    if(this.wish!="")
+    if(this.wish!=="")
     {
     document.getElementById("back").style.background="url('images/6k2.gif'),url('images/cele.gif'),black";
     }
     else{
         document.getElementById("back").style.background="whiteSmoke";
     }
+    if(this.me==="Click Our Pic !!")
+    {
+    this.state.anniSong.addEventListener('ended', () => {this.setState({ music: false,menu:false });this.media();});
+    }
+    else if(this.me==="Click My Pic !!"){
+    this.state.birSong.addEventListener('ended', () => {this.setState({ music: false,menu:false });this.media();});
+    }
+    if(this.name==="Mr Vikas AND Mrs Jyoti" || this.name==="Mr Rajiv AND Mrs Savi")
+    {
+        this.setState({
+            video:true
+        })
+    }
    }
+   componentWillUnmount() {
+    if(this.me==="Click Our Pic !!")
+    {
+    this.state.anniSong.removeEventListener('ended', () => {this.setState({ music: false,menu:false });this.media();});
+    }
+    else if(this.me==="Click My Pic !!"){
+    this.state.birSong.removeEventListener('ended', () => {this.setState({ music: false,menu:false });this.media();});
+    }
+  }
     render(){
         const mstyle={
             backgroundImage:`url('images/aashiana.jpeg')`,
@@ -271,7 +324,7 @@ class Aashiana extends React.Component{
             backgroundSize:`contain`,
             opacity:"0.9"
         }
-        
+        const vid=(this.state.video)?"block":"none";
         return(
             <div>
                 <div style={mstyle} className="container-fluid">
@@ -280,7 +333,10 @@ class Aashiana extends React.Component{
             <div id="back" align="center" style={{padding:"20px",background:"whiteSmoke"}}>
                 {this.check(this.state.date,this.state.month,this.state.year)}
             </div>
-            
+            <div style={{width:"100vw",height:"50vh",display:vid}}>
+            <iframe title="anniversaryvideo" width="100%" height="200%" src={this.url}>
+            </iframe>
+            </div>
             </div>
         );
         
