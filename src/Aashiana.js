@@ -41,24 +41,19 @@ class Aashiana extends React.Component{
             this.wish="Wishing "+this.age+" Happy Birthday"
             nm=1;
             this.me="Click My Pic !!";
-            this.desc=
-            "A : It's little wonder A names are drawn to adjectives like ambitious or adventurous. You do not change your mind under someone else's pressure. A natural leader, you want to be in charge and need to have a purpose. You have courage, but make sure you're also flexible and take other people's ideas seriously. You may have some arrogant tendencies though (no one's perfect) — so just be sure to keep 'em in check.\n"+
-
-            "I : Balance is key for I. You are a compassionate person who feels things deeply. Make sure you stick close to projects and have direction — otherwise, you might suffer from anxiety. Many Is have an affinity for the arts.\n"+
-            
-            "S : Though charming and charismatic, S is also very sensitive and those with the letter in their names feel things deeply. This, in turn, can lead to overly dramatic reactions and an intense inner life. Making sure you're seeing a situation for what it is will help you balance and steady your emotional ups and downs.\n"+
-            
-            "H : H represents creativity and power. It is advisable to those with the letter in their name to fight any doubts you might have about yourself and spend plenty of time outdoors.\n"+
-            
-            "W : You're intuitive, determined, charismatic, and have a strong sense of purpose. But, you tend to be a chronic procrastinator. (We know a thing or two about that.) Take full advantage of your own creativity.\n"+
-            
-            "A : It's little wonder A names are drawn to adjectives like ambitious or adventurous. You do not change your mind under someone else's pressure. A natural leader, you want to be in charge and need to have a purpose. You have courage, but make sure you're also flexible and take other people's ideas seriously. You may have some arrogant tendencies though (no one's perfect) — so just be sure to keep 'em in check.\n"+
-            
-            "R : You feel feelings — a lot. And, this inner intensity often emanates outward. Not only do you possess an inherently kind nature, but you also have an exemplary work ethic — meaning you'll make sure a job gets done, no matter what. That said, Numerology advises you make sure to keep a balance and to work well with others.\n"+
-            
-            "Y : Pushing the envelope is practically your middle name, Ys. (Can't be tamed, right, Miley?) Your ambition and courage make you naturally independent, even though you come across as reserved. Be careful not to be too slow in making decisions — trust your natural gift of intuition.\n"+
-        
-            "A : It's little wonder A names are drawn to adjectives like ambitious or adventurous. You do not change your mind under someone else's pressure. A natural leader, you want to be in charge and need to have a purpose. You have courage, but make sure you're also flexible and take other people's ideas seriously. You may have some arrogant tendencies though (no one's perfect) — so just be sure to keep 'em in check.";
+            this.desc="On this Beautiful Birthday,\n"+
+            "भगवान करे आप Enjoyment से , भरपूर और Smile से अपना आज \n "+
+            "का दिन Celebrate करो, और बहुत सारी Surprises पाओ,\n "+
+            "🎂🎀🎁HAPPY BIRTHDAY🎂\n"+
+            "And \n"+
+            " ये लो तुम्हारा Birthday Gift… \n "+
+            "1000 Rs. का Scratch कार्ड… \n "+
+            "तुम भी क्या याद करोंगे… कर लो ऐश… \n "+
+            " ░░░░░░░░░░░░ \n"+
+            "Scratch करो Aish करो... \n" +
+            "🥳🍫🍔🍕😂🔥🎂🎂🍰🍦🍧🍬 \n"+
+            "Happy Birthday to you!";
+            this.url="./aish.mp4";
         }else if(d===12 && m===12){
             this.name="Bhairvi Mehndiratta";
             this.age=y-2007;
@@ -301,7 +296,7 @@ class Aashiana extends React.Component{
     else if(this.me==="Click My Pic !!"){
     this.state.birSong.addEventListener('ended', () => {this.setState({ music: false,menu:false });this.media();});
     }
-    if(this.name==="Mr Vikas AND Mrs Jyoti" || this.name==="Mr Rajiv AND Mrs Savi")
+    if(this.name==="Mr Vikas AND Mrs Jyoti" || this.name==="Mr Rajiv AND Mrs Savi" || this.name==="Aishwarya Aneja")
     {
         this.setState({
             video:true
