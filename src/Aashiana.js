@@ -94,13 +94,14 @@ class Aashiana extends React.Component{
             "जीवन भर यूं ही बंधा रहे,\n"+
             "किसी की नजर ना लगे आपके प्यार को\n"+
             "और आप यूं ही हर साल सालगिरह मनाते रहे।";
-        }else if(d===21 && m===7){
+        }else if(d===19 && m===10){
             this.name="Navneet Aneja";
             this.age=y-2001;
             this.to="TO"
             this.wish="Wishing "+this.age+" Happy Birthday"
             nm=7;
             this.me="Click My Pic !!";
+            this.desc="Its my birthday.. 🥳🤩🎂🎉";
         }else if(d===3 && m===12){
             this.name="Mrs Savi Aneja";
             this.age=y-1976;
