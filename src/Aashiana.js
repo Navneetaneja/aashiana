@@ -1,5 +1,8 @@
+// import { header } from "express/lib/request";
 import React from "react";
 import "./Aashiana.css";
+import data from "./data.json";
+// import sendmess from "./server";
 
 class Aashiana extends React.Component {
   name = "Sorry no any event Today!";
@@ -39,7 +42,7 @@ class Aashiana extends React.Component {
     var year = today.getFullYear();
     this.state = {
       date: date,
-      month: month + 1,
+      month: month+1,
       year: year,
       menu: false,
       music: false,
@@ -47,6 +50,7 @@ class Aashiana extends React.Component {
       anniSong: new Audio("./anniversary.m4a"),
       video: false,
     };
+    // sendmess();
   }
 
   check(d, m, y) {
@@ -79,8 +83,8 @@ class Aashiana extends React.Component {
       this.wish = "Wishing " + this.age + " Happy Birthday";
       nm = 2;
       this.me = "Click My Pic !!";
-      this.desc=`A birthday cake is always good,\n🥳🍫🍔🍕😂🔥🎂🎂🍰🍦🍧🍬 \nbut to me, a sister with a birthday cake is undoubtedly great. Happy birthday, sister.”`;
-      this.url="https://drive.google.com/file/d/1D5cE19mTfqyHwXPvG7uoO325gkUV12wP/preview";
+      this.desc = `A birthday cake is always good,\n🥳🍫🍔🍕😂🔥🎂🎂🍰🍦🍧🍬 \nbut to me, a sister with a birthday cake is undoubtedly great. Happy birthday, sister.”`;
+      this.url = "https://drive.google.com/file/d/1D5cE19mTfqyHwXPvG7uoO325gkUV12wP/preview";
     } else if (d === 3 && m === 6) {
       this.name = "Chaitanya Mehndiratta";
       this.age = y - 2005;
@@ -225,7 +229,7 @@ class Aashiana extends React.Component {
         "और आप यूं ही हर साल सालगिरह मनाते रहे।";
       this.url =
         "https://drive.google.com/file/d/18LdlKztkTZdmtCeR43R5orRixgITHbbt/preview";
-    } else if (d === 9 && m === 5) {
+    } else if (d === 8 && m === 5) {
       this.name = "ALL MOTHERS OF AASHIANA";
       this.age = "";
       this.wish = "Wishing " + this.age + " Happy Mother's Day";
@@ -240,7 +244,7 @@ class Aashiana extends React.Component {
       this.me = "Click Pic!!";
     }
     const show = this.state.menu ? "show" : "";
-    const rotate=this.wish===""?"":"rotat";
+    const rotate = this.wish === "" ? "" : "rotat";
     return (
       <div>
         <img
@@ -248,7 +252,7 @@ class Aashiana extends React.Component {
             this.togle();
             this.media();
           }}
-          className={"rounded-circle sticky-top "+rotate}
+          className={"rounded-circle sticky-top " + rotate}
           src={this.src[nm]}
           alt="Birthday/Anniversary"
           height="250px"
@@ -374,6 +378,14 @@ class Aashiana extends React.Component {
       });
     }
   }
+  findIndex(){
+    for(let i=0;i<data.length;i++){
+      // console.log(data[i],this.state.month,this.state.date);
+      if(((data[i].month === this.state.month) && (data[i].day > this.state.date)) || (data[i].month > this.state.month))
+      return i;
+    }
+    return 0;
+  }
   render() {
     const mstyle = {
       backgroundImage: `url('images/aashiana.jpeg')`,
@@ -382,6 +394,9 @@ class Aashiana extends React.Component {
       opacity: "0.9",
     };
     const vid = this.state.video ? "block" : "none";
+    const index=this.findIndex();
+    console.log(index);
+    const length=data.length;
     return (
       <div>
         <div style={mstyle} className="container-fluid">
@@ -415,6 +430,39 @@ class Aashiana extends React.Component {
             src={this.url}
           ></iframe>
         </div>
+        <h3 style={{color:"purple",margin:"1rem"}}>UPCOMING EVENTS <i className="fa fa-chevron-right"></i></h3>
+        <div className="row m-2">
+          <div className="col-12 col-lg-4 col-md-4 col-sm-4">
+          <div className="text-center text-white" style={{backgroundColor:`${data[index%length].type==="Birthday"?"dodgerBlue":"red"}`,borderRadius:"1rem"}}>
+            <div style={{width:"50%",height:"25vh",margin:"auto",padding:"10px"}}>
+              <img src={data[index%length].image} style={{borderRadius:"50%"}} alt="img" width="100%" height="100%"/>
+            </div>
+            <h4>{data[index%length].name}</h4>
+            <h4>{data[index%length].type}</h4>
+            <h4>{data[index%length].day}{' '}{data[index%length].month_name}</h4>
+          </div>
+          </div>
+          <div className="col-12 col-lg-4 col-md-4 col-sm-4">
+          <div className="text-center text-white" style={{backgroundColor:`${data[(index+1)%length].type==="Birthday"?"dodgerBlue":"red"}`,borderRadius:"1rem"}}>
+            <div style={{width:"50%",height:"25vh",margin:"auto",padding:"10px"}}>
+              <img src={data[(index+1)%length].image} style={{borderRadius:"50%"}} alt="img" width="100%" height="100%"/>
+            </div>
+            <h4>{data[(index+1)%length].name}</h4>
+            <h4>{data[(index+1)%length].type}</h4>
+            <h4>{data[(index+1)%length].day}{' '}{data[(index+1)%length].month_name}</h4>
+          </div>
+          </div>
+          <div className="col-12 col-lg-4 col-md-4 col-sm-4">
+          <div className="text-center text-white" style={{backgroundColor:`${data[(index+2)%length].type==="Birthday"?"dodgerBlue":"red"}`,borderRadius:"1rem"}}>
+            <div style={{width:"50%",height:"25vh",margin:"auto",padding:"10px"}}>
+              <img src={data[(index+2)%length].image} style={{borderRadius:"50%"}} alt="img" width="100%" height="100%"/>
+            </div>
+            <h4>{data[(index+2)%length].name}</h4>
+            <h4>{data[(index+2)%length].type}</h4>
+            <h4>{data[(index+2)%length].day}{' '}{data[(index+2)%length].month_name}</h4>
+          </div>
+          </div>
+          </div>
       </div>
     );
   }
