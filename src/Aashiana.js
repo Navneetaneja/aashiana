@@ -11,6 +11,7 @@ class Aashiana extends React.Component {
   age = "";
   me = "Click me !";
   desc = "Don't Be Sad Next Event Will be Soon !!";
+  days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   src = [
     "https://media.tenor.com/images/7a1a4acf852f33dbf4b9d0f51320bc0f/tenor.gif",
     "images/aish.jpeg",
@@ -386,6 +387,9 @@ class Aashiana extends React.Component {
     }
     return 0;
   }
+  getDayName(day,month){
+    return this.days[new Date(Date.UTC(this.state.year,month-1,day)).getDay()];
+  }
   render() {
     const mstyle = {
       backgroundImage: `url('images/aashiana.jpeg')`,
@@ -395,7 +399,7 @@ class Aashiana extends React.Component {
     };
     const vid = this.state.video ? "block" : "none";
     const index=this.findIndex();
-    console.log(index);
+    // console.log(index);
     const length=data.length;
     return (
       <div>
@@ -439,7 +443,7 @@ class Aashiana extends React.Component {
             </div>
             <h4>{data[index%length].name}</h4>
             <h4>{data[index%length].type}</h4>
-            <h4>{data[index%length].day}{' '}{data[index%length].month_name}</h4>
+            <h4>{data[index%length].day}{' '}{data[index%length].month_name}{', '}{this.getDayName(data[index%length].day,data[index%length].month)}</h4>
           </div>
           </div>
           <div className="col-12 col-lg-4 col-md-4 col-sm-4">
@@ -449,7 +453,7 @@ class Aashiana extends React.Component {
             </div>
             <h4>{data[(index+1)%length].name}</h4>
             <h4>{data[(index+1)%length].type}</h4>
-            <h4>{data[(index+1)%length].day}{' '}{data[(index+1)%length].month_name}</h4>
+            <h4>{data[(index+1)%length].day}{' '}{data[(index+1)%length].month_name}{', '}{this.getDayName(data[(index+1)%length].day,data[(index+1)%length].month)}</h4>
           </div>
           </div>
           <div className="col-12 col-lg-4 col-md-4 col-sm-4">
@@ -459,7 +463,7 @@ class Aashiana extends React.Component {
             </div>
             <h4>{data[(index+2)%length].name}</h4>
             <h4>{data[(index+2)%length].type}</h4>
-            <h4>{data[(index+2)%length].day}{' '}{data[(index+2)%length].month_name}</h4>
+            <h4>{data[(index+2)%length].day}{' '}{data[(index+2)%length].month_name}{', '}{this.getDayName(data[(index+2)%length].day,data[(index+2)%length].month)}</h4>
           </div>
           </div>
           </div>
