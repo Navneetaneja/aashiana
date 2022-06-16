@@ -61,9 +61,9 @@ class Aashiana extends React.Component {
       birSong: new Audio("./birthday.mp3"),
       anniSong: new Audio("./anniversary.m4a"),
       video: false,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
+      hours: 23-hours,
+      minutes: 59-minutes,
+      seconds: 60-seconds,
     };
     // sendmess();
   }
