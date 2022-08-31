@@ -1,56 +1,69 @@
 @media (prefers-reduced-motion: no-preference) {
-    .rotat {
-      animation: birth infinite 10s linear 1s;
-    }
-    .mypic{
-        animation:pic infinite 2s linear 1s alternate ;
-    }
+  .rotat {
+    animation: birth infinite 10s linear 1s;
+  }
+  .mypic {
+    animation: pic infinite 2s linear 1s alternate;
+  }
+  .marquee p{
+    animation: marquee 8s linear infinite alternate;
+  }
 }
 
-@keyframes birth{
-    from{
-        transform: rotateY(0deg);
-    }
-    to{
-        transform: rotateY(360deg);
-        clip-path: polygon(0% 0%,100% 0%,50% 100%);
-    }
-   
+.marquee{
+    overflow: hidden;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes birth {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 @keyframes pic {
-    0%{
-        color: red;
-        transform:scale(1) rotate(0deg);
-    }
-    25%{
-        color:blue;
-        transform:scale(1.2) rotate(5deg);
-
-    }
-    50%{
-        color:green;
-        transform: scale(1.2) rotate(0deg);
-    }
-    100%{
-        color:orange;
-        transform: scale(1) rotate(-5deg);
-    }
+  0% {
+    color: red;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    color: blue;
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    color: green;
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    color: orange;
+    transform: scale(1) rotate(-5deg);
+  }
 }
-#description::-webkit-scrollbar{
-    display: none;
+#description::-webkit-scrollbar {
+  display: none;
 }
-::-webkit-scrollbar{
-    width: 10px;
+::-webkit-scrollbar {
+  width: 10px;
 }
-::-webkit-scrollbar-track{
-    background:black;
-    border:2px solid white;
-    border-radius: 10px;
+::-webkit-scrollbar-track {
+  background: black;
+  border: 2px solid white;
+  border-radius: 10px;
 }
-::-webkit-scrollbar-thumb{
-    background-color:gainsboro;
-    border-radius: 20px;
+::-webkit-scrollbar-thumb {
+  background-color: gainsboro;
+  border-radius: 20px;
 }
-::-webkit-scrollbar-thumb:hover{
-background: orange;
+::-webkit-scrollbar-thumb:hover {
+  background: orange;
 }
