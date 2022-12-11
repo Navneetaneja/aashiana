@@ -1,8 +1,8 @@
-// import { header } from "express/lib/request";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Aashiana.css";
+import "./Common.css";
 import data from "./data.json";
-// import sendmess from "./server";
 
 class Aashiana extends React.Component {
   name = "Sorry no any event Today";
@@ -65,7 +65,6 @@ class Aashiana extends React.Component {
       minutes: 59 - minutes,
       seconds: 60 - seconds,
     };
-    // sendmess();
   }
 
   check(d, m, y) {
@@ -432,7 +431,6 @@ class Aashiana extends React.Component {
   }
   findIndex() {
     for (let i = 0; i < data.length; i++) {
-      // console.log(data[i],this.state.month,this.state.date);
       if (
         (data[i].month === this.state.month && data[i].day > this.state.date) ||
         data[i].month > this.state.month
@@ -447,34 +445,11 @@ class Aashiana extends React.Component {
     ];
   }
   render() {
-    const mstyle = {
-      backgroundImage: `url('images/aashiana.jpeg')`,
-      height: "200px",
-      backgroundSize: `contain`,
-      opacity: "0.9",
-    };
     const vid = this.state.video ? "block" : "none";
     const index = this.findIndex();
-    // console.log(index);
     const length = data.length;
     return (
       <div>
-        <div style={mstyle} className="container-fluid">
-          <div
-            style={{
-              display: "flex",
-              height: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-              fontFamily: "cursive",
-              opacity: "0.7",
-            }}
-          >
-            <h3 className="text-white font-italic font-weight-bolder text-white">
-              AASHIANA
-            </h3>
-          </div>
-        </div>
         <div
           id="back"
           align="center"
@@ -491,9 +466,11 @@ class Aashiana extends React.Component {
             allowFullScreen
           ></iframe>
         </div>
+        <Link className="links" to="all-events">
         <h3 style={{ color: "purple", margin: "1rem" }}>
           UPCOMING EVENTS <i className="fa fa-chevron-right"></i>
         </h3>
+        </Link>
         <div className="row m-2">
           <div className="col-12 col-lg-4 col-md-4 col-sm-4">
             <div
