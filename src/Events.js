@@ -1,18 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import allData from "./data.json";
 import "./Common.css";
+import { useEffect } from "react";
 
 export default function Events() {
+  let pathname = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
-    <Link to="/" className="links">
-    <h3 style={{ color: "purple", margin: "1rem" }}>
+      <Link to="/" className="links">
+        <h3 style={{ color: "purple", margin: "1rem" }}>
           ALL EVENTS <i className="fa fa-chevron-down"></i>
-    </h3>
-    </Link>
-    <div className="row m-2">
-      {allData.map((data, index) => {
-        return (
+        </h3>
+      </Link>
+      <div className="row m-2">
+        {allData.map((data, index) => {
+          return (
             <div className="col-12 col-lg-4 col-md-4 col-sm-4">
               <div
                 key={index}
@@ -49,9 +54,9 @@ export default function Events() {
                 </h4>
               </div>
             </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
     </>
   );
 }
