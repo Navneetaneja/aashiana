@@ -16,6 +16,14 @@
     "month_name": "January"
   },
   {
+    "name": "Himanshu",
+    "image": "images/himanshu.jpeg",
+    "type": "Birthday",
+    "day": 16,
+    "month": 1,
+    "month_name": "January"
+  },
+  {
     "name": "Garvit",
     "image": "images/garvit.jpeg",
     "type": "Birthday",

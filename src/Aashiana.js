@@ -40,7 +40,7 @@ class Aashiana extends React.Component {
     "images/simmi.jpeg",
     "images/vikas.jpeg",
     "images/vj_ann.jpeg",
-    "images/mothers.jpeg",
+    "images/himanshu.jpeg",
   ];
   url = "";
   constructor() {
@@ -244,6 +244,17 @@ class Aashiana extends React.Component {
         "और आप यूं ही हर साल सालगिरह मनाते रहे।";
       this.url =
         "https://drive.google.com/file/d/18LdlKztkTZdmtCeR43R5orRixgITHbbt/preview";
+    } else if (d === 16 && m === 1) {
+      this.name = "Himanshu Batra";
+      this.age = y - 1995;
+      this.to = "TO";
+      this.wish = "Wishing " + this.age + " Happy Birthday";
+      nm = 19;
+      this.me = "CLICK MY PIC";
+      this.desc =
+        "Congratulations \n" +
+        "🥳🍫🍔🍕😂🔥🎂🎂🍰🍦🍧🍬 \n" +
+        "Happy Birthday to you";
     }
 
     const show = this.state.menu ? "show" : "";
@@ -307,7 +318,7 @@ class Aashiana extends React.Component {
       (this.state.month === data[index % length].month - 1 && data[index % length].day === 1)) {
       this.me = (
         <span>
-          {data[index % length].name} &nbsp; {data[index % length].type}
+          {data[index % length].name}&nbsp;{data[index % length].type}
           <br />
           will be in
           <br />
@@ -384,35 +395,32 @@ class Aashiana extends React.Component {
         video: true,
       });
     }
-    if (this.me !== "CLICK ME") {
+    if (this.me?.props?.children.includes("will be in")) {
+      let sec = this.state.seconds;
+      let min = this.state.minutes;
+      let hrs = this.state.hours;
       const timeline = setInterval(() => {
-        if (this.state.seconds === 0) {
-          if (this.state.minutes !== 0) {
-            this.setState({
-              seconds: 60,
-              minutes: this.state.minutes - 1,
-            });
+        if (sec === 0) {
+          if (min !== 0) {
+            sec = 59;
+            min = min - 1;
           }
-        }
-        if (this.state.minutes === 0) {
-          if (this.state.hours !== 0) {
-            this.setState({
-              minutes: 59,
-              hours: this.state.hours - 1,
-            });
+          if (min === 0 && hrs !== 0) {
+            min = 59;
+            hrs = hrs - 1;
           }
+        } else {
+          sec = sec - 1;
         }
-        this.setState({
-          seconds: this.state.seconds - 1,
-        });
-        if (
-          this.state.hours <= 0 &&
-          this.state.minutes <= 0 &&
-          this.state.seconds <= 0
-        ) {
+        if (hrs <= 0 && min <= 0 && sec <= 0) {
           clearInterval(timeline);
           window.location.assign(window.location.href);
         }
+        this.setState({
+          hours: hrs,
+          minutes: min,
+          seconds: sec
+        });
       }, 1000);
     }
   }
@@ -432,7 +440,7 @@ class Aashiana extends React.Component {
   findIndex() {
     for (let i = 0; i < data.length; i++) {
       if (
-        (data[i].month === this.state.month && data[i].day > this.state.date) ||
+        (data[i].month === this.state.month && data[i].day >= this.state.date) ||
         data[i].month > this.state.month
       )
         return i;
@@ -467,9 +475,9 @@ class Aashiana extends React.Component {
           ></iframe>
         </div>
         <Link className="links" to="all-events">
-        <h3 style={{ color: "purple", margin: "1rem" }}>
-          UPCOMING EVENTS <i className="fa fa-chevron-right"></i>
-        </h3>
+          <h3 style={{ color: "purple", margin: "1rem" }}>
+            UPCOMING EVENTS <i className="fa fa-chevron-right"></i>
+          </h3>
         </Link>
         <div className="row m-2">
           <div className="col-12 col-lg-4 col-md-4 col-sm-4">
